@@ -1,2 +1,2 @@
 
-sort : sort.o insertion.o get_number.o
+sort : sort.o insertion.o number_io.o

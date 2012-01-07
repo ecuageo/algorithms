@@ -1,14 +1,12 @@
 #include "sort.h"
 
-/* numbers must have a least a '\0' character representing an empty list */
-int insertion(double numbers[])
+int insertion(int *numbers, int length)
 {
-  int quantity = -1;
   int index, next;
-  double key;
+  int key;
 
-  if (numbers[0] != NIL && numbers[1] != NIL) {
-    for (next = 1; numbers[next] != NIL; next++) { // 2 to numbers.length
+  if (length >= 2) {
+    for (next = 1; next < length; next++) { // 2 to numbers.length or (zero based 1 to numbers.length-1)
       key = numbers[next];
       index = next - 1;
       while (index >= 0 && numbers[index] > key) {

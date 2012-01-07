@@ -1,30 +1,49 @@
 #include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
 #include "sort.h"
 
-void print_numbers(double numbers[]);
-
-int main()
+int main(int argc, char *argv[])
 {
-  double list[SORTLISTSIZE];
+  int list[SORTLISTSIZE];
   int list_index = 0;
+  int test[] = {1,2,3,6,10,4};
+  char *sort_algorithm;
 
+  if (argc > 1) {
+    if (strstr("insertion",argv[1]) != NULL) {
+      sort_algorithm = argv[1];
+      printf("Using sorting algorithm: %s\n", sort_algorithm);
+    } else {
+    printf("You must specificy an available sorting algorithm to use:\n");
+    printf("insertion\n");
+    exit(EXIT_FAILURE);
+    }
+  } else {
+    printf("You must specificy the sorting algorithm to use:\n");
+    printf("insertion\n");
+    exit(EXIT_FAILURE);
+  }
+  
   printf("Enter some numbers\n");
 
-  while (get_number(&list[list_index++]));
-  list[list_index] = NIL;                     // null terminate arrays
+  while (get_number(&list[list_index])) list_index++;
 
-  insertion(&list);
-  /* print_numbers(list); */
-  printf("%lf %lf %lf %lf %lf %lf ", list[0], list[1], list[2], list[3], list[4], list[5]);
+  printf("Your numbers: \n");
+  print_numbers(list, list_index);
+
+  // switch on sorting algorithm
+  switch (sort_algorithm[0]) {
+  case 'i':
+    insertion(list, list_index);
+    break;
+  }
+
+  printf("\nYour numbers sorted: \n");
+  print_numbers(list, list_index);
+
   printf("\nall done\n");
 
-  return 0;
+  exit(EXIT_SUCCESS);
 }
 
-void print_numbers(double numbers[])
-{
-  int index = 0;
-
-  printf("The numbers you entered: \n");
-  while (numbers[index] != NIL) printf(" %lf", numbers[index]);
-}
