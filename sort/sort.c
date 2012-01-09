@@ -43,6 +43,9 @@ int main(int argc, char *argv[])
   case 'm':
     merge(list, list_index);
     break;
+  case 'b':
+    bubble(list,list_index);
+    break;
   }
 
 

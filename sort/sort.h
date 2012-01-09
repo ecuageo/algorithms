@@ -2,7 +2,7 @@
 #define CHARNUMSIZE 20
 #define SORTLISTSIZE 200
 #define NIL '\0'
-#define SORTINGMETHODS "insertion selection merge"
+#define SORTINGMETHODS "insertion selection merge bubble"
 
 int get_number(int *num);
 void print_numbers(int *numbers, int length);
