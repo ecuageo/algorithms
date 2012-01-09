@@ -11,17 +11,17 @@ int main(int argc, char *argv[])
   char *sort_algorithm;
 
   if (argc > 1) {
-    if (strstr("insertion",argv[1]) != NULL) {
+    if (strstr(SORTINGMETHODS,argv[1]) != NULL) {
       sort_algorithm = argv[1];
       printf("Using sorting algorithm: %s\n", sort_algorithm);
     } else {
     printf("You must specificy an available sorting algorithm to use:\n");
-    printf("insertion\n");
+    printf("%s\n", SORTINGMETHODS);
     exit(EXIT_FAILURE);
     }
   } else {
     printf("You must specificy the sorting algorithm to use:\n");
-    printf("insertion\n");
+    printf("%s\n", SORTINGMETHODS);
     exit(EXIT_FAILURE);
   }
   
@@ -37,7 +37,14 @@ int main(int argc, char *argv[])
   case 'i':
     insertion(list, list_index);
     break;
+  case 's':
+    selection(list, list_index);
+    break;
+  case 'm':
+    merge(list, list_index);
+    break;
   }
+
 
   printf("\nYour numbers sorted: \n");
   print_numbers(list, list_index);

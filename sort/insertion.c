@@ -1,6 +1,6 @@
 #include "sort.h"
 
-int insertion(int *numbers, int length)
+void insertion(int *numbers, int length)
 {
   int index, next;
   int key;
@@ -16,6 +16,4 @@ int insertion(int *numbers, int length)
       numbers[index + 1] = key;
     }
   }
-
-  return index;
 }
